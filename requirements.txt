@@ -1,0 +1,6 @@
+wikipedia
+pandas
+scikit-learn
+gensim
+nltk
+numpy
