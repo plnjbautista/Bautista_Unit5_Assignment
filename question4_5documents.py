@@ -11,7 +11,13 @@ from sklearn.metrics import classification_report
 nltk.download('punkt')
 
 # Topics to fetch
-topics = ["Internet of Things", "Artificial Intelligence"]
+topics = [
+    "Computer Science",
+    "Artificial Intelligence",
+    "Natural Language Processing",
+    "Apple",
+    "Internet of Things"
+]
 
 # Fetch articles from Wikipedia
 corpus = [wikipedia.page(topic).content for topic in topics]
@@ -35,7 +41,7 @@ labels = []
 for idx, article in enumerate(corpus):
     chunks = split_into_chunks(article)
     tokenized_chunks.extend(chunks)
-    labels.extend([idx] * len(chunks))  # 0 for CS, 1 for AI
+    labels.extend([idx] * len(chunks))  # Label by topic index
 
 # Train Word2Vec model
 model = Word2Vec(sentences=tokenized_chunks, vector_size=100, window=5, min_count=1, workers=4)
